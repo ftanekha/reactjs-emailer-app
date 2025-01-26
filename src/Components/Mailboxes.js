@@ -50,7 +50,7 @@ function Mailboxes({style, logout}){
 
         if(!isEmailDataValid.length){
             fetch(
-                'http://localhost:8080',
+                'https://plmxedkcru.eupar04.qoddiapp.com',
                 {
                     method: 'POST',
                     'Content-Type': 'application/json',
