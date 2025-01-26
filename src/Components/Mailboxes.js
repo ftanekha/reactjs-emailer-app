@@ -50,7 +50,7 @@ function Mailboxes({style, logout}){
 
         if(!isEmailDataValid.length){
             fetch(
-                'https://plmxedkcru.eupar04.qoddiapp.com',
+                'http://ihzcsotyrk.eupar04.qoddiapp.com',
                 {
                     method: 'POST',
                     'Content-Type': 'application/json',
