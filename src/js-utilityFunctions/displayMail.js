@@ -50,7 +50,7 @@ export default function displayMail({target}){
                         li.key = i
                         li.className = 'inbox-email'
                         //generate email body
-                        const newEmail = createEmail({from, subject,body})
+                        const newEmail = createEmail({from, subject, body})
                         //add delete icon
                         const deleteIcon = document.createElement('span')
                         deleteIcon.title = 'delete email'

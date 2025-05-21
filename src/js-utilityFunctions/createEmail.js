@@ -15,6 +15,11 @@ function createEmail(emailProps){
             if(emailProp === 'subject'){
                 emailPropContent.className = 'subject'
             }
+
+             if(emailProp === 'body'){
+                emailPropContent.className += 'email-body'
+            }
+
             emailPropContent.textContent = emailProps[emailProp]
 
             row.append(...[emailPropName, emailPropContent])

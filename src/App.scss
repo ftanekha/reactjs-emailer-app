@@ -6,6 +6,8 @@
 ;
 
 div.main-container{
+    font-size: 12px;
+    letter-spacing: 1px;
     button.loginToggleButton{
         @include loginToggleButton;
     }
@@ -26,21 +28,23 @@ div.main-container{
             outline: none;
             transition: .5s;
         }
-        button.loginButton{}
     }
     ul#login-error-messages-container{
-        background-color: $bulma-danger;
         width: 130px;
-        margin: 20px auto;
-        padding: 10px 30px;
+        margin: 10px auto;
+        padding: 10px;
         list-style-type: none;
         list-style-position: outside;
         li{
-            color: azure;
+            color: darken(azure, 50%);
             margin-bottom: 10px;
+            font-size: 12px;
+            font-weight: 600;
+            font-family: monospace;
         }
     }
     div.mailboxes-container{
+        position: relative;
         width: 100%;
         height: 100%;
         margin: 5px;
@@ -52,9 +56,10 @@ div.main-container{
         }
         div.mailboxes{
             width: 80%;
-            margin: auto;
+            margin: 50px auto 20px;
             transition: .5s;
             ul{
+                margin-top: 30px;
                 display: flex;
                 width: 100%;
                 list-style-type: none;
@@ -63,7 +68,7 @@ div.main-container{
                 li{
                     box-sizing: border-box;
                     flex-grow: 1;
-                    height: 100px;
+                    height: 40px;
                     display: flex;
                     justify-content: center;
                     align-items: center;
@@ -82,7 +87,6 @@ div.main-container{
                         }
                     }
                     &#bin{
-                        font-size: 1.5rem;
                         font-weight: 600;
                         &::after{
                             content: '\01F5D1';
@@ -95,10 +99,11 @@ div.main-container{
                 width: 10%;
                 margin: 0;
                 ul{
+                    margin-top: 100px;
                     flex-direction: column;
                     li{
-                        font-size: 1rem;
                         font-weight: 600;
+                        height: 100px;
                     }
                 }
             }
@@ -148,17 +153,14 @@ div.main-container{
                     button{
                         width: 100%;
                         height: 50px;
-                        background-color: $bulma-black-ter;
+                        background-color: transparent;
                         border: none;
                         outline: none;
-                        color: azure;
-                        font-weight: 400;
-                        font-size: .9rem;
+                        color: darken(azure, 10%);
                         transition: .5s;
                         border-radius: 20px;
                         cursor: pointer;
                         &.send-email{
-                            background-color: #04AA6D;
                             &:hover{
                                 background-color: darken(#04AA6D, 10%);
                             }
@@ -169,7 +171,8 @@ div.main-container{
                             background-color: lighten($bulma-black-ter, 5%);
                         }
                         span.icon-paper-plane-o, span.icon-file-o{
-                            font-size: 1.25rem;
+                            color: darken(azure, 90%);
+                            font-weight: 900;
                         }
                     }
                     @media (min-width: 768px){
@@ -188,11 +191,9 @@ div.main-container{
                 list-style-type: none;
                 list-style-position: outside;
                 padding-left: 0;
-                margin-top: 100px;
                 li{
                     color: azure;
                     font-weight: normal;
-                    font-size: .9rem;
                     border-bottom: solid darken($aquamarine, 45%) 1px;
                     margin-bottom: 20px;
                     display: flex;
@@ -203,7 +204,6 @@ div.main-container{
                         color: darkgray;
                     }
                     span.delete-icon, span.binned-delete-icon{
-                        font-size: 1.5rem;
                         cursor: pointer;
                         &::after{
                             content: '\01F5D1';
@@ -220,7 +220,6 @@ div.main-container{
                                     padding-left: 10px;
                                     &.lowercase{
                                         text-transform: lowercase;
-                                        font-size: 1rem;
                                         font-weight: 600;
                                     }
                                     &.subject{
@@ -233,10 +232,13 @@ div.main-container{
                                 }
                                 td:first-child{
                                     padding: 10px 30px 0 5px;
-                                    background-color: $aquamarine;
-                                    color: $bulma-black-ter;
+                                    background-color: darken(azure, 80%);
+                                    color: darken(azure, 50%);
                                     text-transform: capitalize;
                                     font-weight: 600;
+                                }
+                                td.email-body{
+                                    font-size: 10px;
                                 }
                             }
                         }
@@ -252,27 +254,30 @@ div.main-container{
             }
             @media (min-width: 1220px){
                 width: 60%;
-                margin: 0 0 0 0;
+                margin: 100px 0 0 0;
             }
         }
         button.logoutButton{
             position: fixed;
-            bottom: 5px;
-            right: calc(50% - 50px);
-            background-color: $bulma-danger;
-            opacity: .5;
+            top: 0;
+            right: 0;
+            width: 100%;
+            height: 60px;
+            border-bottom: solid darken(azure, 75%);
+            background-color: darken(azure, 80%);
             transition: .5s;
-            transform: rotateX(55deg);
-            border-radius: 25%;
             &:hover{
-                background-color: darken($bulma-danger, 10%);
-                opacity: 1;
-                transform: rotateX(0deg);
+                background-color: darken(azure, 75%);
             }
             @media (min-width: 1220px){
-                top: 10px;
-                right: 10px;
+                transform: rotate(90deg);
+                width: 100vh;
+                top: calc(50vh - 30px);
+                left: calc( 100vw - 50vh - 45px)
             }
         }
+    }
+    @media (min-width: 1220px){
+        font-size: 16px;
     }
 }
