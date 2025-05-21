@@ -1,4 +1,4 @@
-import React, {useState} from 'react'
+import {useState} from 'react'
 import LogoutButton from './LogoutButton.js'
 import displayMail from '../js-utilityFunctions/displayMail.js'
 import {isValidStringInput, isUserEmailAddressValid} from '../js-utilityFunctions/formValidation.js'
@@ -50,7 +50,7 @@ function Mailboxes({style, logout}){
 
         if(!isEmailDataValid.length){
             fetch(
-                'https://ihzcsotyrk.eupar04.qoddiapp.com',
+                process.env.REACT_APP_RAILWAY_SERVER_URL || 'http://localhost:8080/',
                 {
                     method: 'POST',
                     'Content-Type': 'application/json',
@@ -58,13 +58,17 @@ function Mailboxes({style, logout}){
                 }
             )
             .then(res => {
-                if(res.status === 200 && res.body){
-                    console.info('message sent')
+                if(res.status === 200){
+                    console.info('new email sent')
                     emailForm.reset()
-                    return res.text()
+                    return res.json()
                 }
             })
-            .then(emailBody => setSentMail([...sentMail, emailBody]))
+            .then(
+                emailBody => {
+                    setSentMail(prev => [...sentMail, emailBody])
+                }
+            )
             .catch(err => console.warn(err))
         }else{
             console.table(isEmailDataValid)
@@ -87,8 +91,8 @@ function Mailboxes({style, logout}){
             </div>
             <div className='emails-container'>
                 <form id='emails-compose' className='emails new-email' onSubmit={sendEmail}>
-                    <input id='email-to-address' className='form-control' type='email' placeholder='To:'/>
-                    <input id='email-subject' className='form-control' type='text' placeholder='Subject:'/>
+                    <input id='email-to-address' className='form-control' type='email' autoComplete='on' placeholder='To:'/>
+                    <input id='email-subject' className='form-control' type='text' autoComplete='on' placeholder='Subject:'/>
                     <textarea id='email-body' className='form-control text-area'></textarea>
                     <div className='submit-button-contaier'>
                         <button type='submit' className='send-email'>
@@ -101,15 +105,10 @@ function Mailboxes({style, logout}){
                 <ul id='emails-sent' className='emails'>
                     {
                         sentMail.map(
-                            (email, i) => {
-                                //shorten email
-                                email = Array.from(email)
-                                if(email.length > 50)  email.length = 50
-                                email = email.join('')
-                                //
+                            ({emailToAddress , emailSubject}, i) => {
                                 return(
                                     <li key={i}>
-                                        {email} <span title='delete email' className='delete-icon' onClick={deleteEmail}></span>
+                                        <span><em style={{fontWeight: 500, color: 'gray', marginRight: 16}}>{emailToAddress}</em>{`${emailSubject}...`}</span> <span title='delete email' className='delete-icon' onClick={deleteEmail}></span>
                                     </li>
                                 )
                             }
