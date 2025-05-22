@@ -8,10 +8,10 @@ export default function displayMail({target}){
 
     mailboxLinks.forEach(
         mailboxLink => {
-            if(mailboxLink !== target && mailboxLink.style.border !== 'none') mailboxLink.style.border = 'none'
+            if(mailboxLink !== target && mailboxLink.style.color !== 'azure') mailboxLink.style.color = 'azure'
         }
     )
-    target.style.border = `solid 2px ${aquamarine}`
+    target.style.color = aquamarine
     //display emails
     const targetEmails = document.querySelector(`#emails-${target.id}`)
 

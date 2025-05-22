@@ -95,7 +95,7 @@ div.main-container ul#login-error-messages-container {
   list-style-position: outside;
 }
 div.main-container ul#login-error-messages-container li {
-  color: #00f0f0;
+  color: #e6e6e6;
   margin-bottom: 10px;
   font-size: 12px;
   font-weight: 600;
@@ -136,20 +136,29 @@ div.main-container div.mailboxes-container div.mailboxes ul li {
   justify-content: center;
   align-items: center;
   color: azure;
+  font-weight: 500;
   transition: 0.5s;
   cursor: pointer;
 }
 div.main-container div.mailboxes-container div.mailboxes ul li:hover {
   color: #57ffff;
 }
-div.main-container div.mailboxes-container div.mailboxes ul li#compose:hover {
-  background-color: azure !important;
+div.main-container div.mailboxes-container div.mailboxes ul li#compose {
+  background-color: #005757 !important;
 }
 div.main-container div.mailboxes-container div.mailboxes ul li#compose span.pencil {
-  color: hsl(0, 0%, 14%);
+  color: #00f0f0;
+}
+div.main-container div.mailboxes-container div.mailboxes ul li#compose:hover {
+  background-color: #008a8a !important;
+}
+div.main-container div.mailboxes-container div.mailboxes ul li#compose:hover span.pencil {
+  color: black;
+  font-weight: 600;
 }
 div.main-container div.mailboxes-container div.mailboxes ul li#bin {
   font-weight: 600;
+  font-size: 16px;
 }
 div.main-container div.mailboxes-container div.mailboxes ul li#bin::after {
   content: "🗑";
@@ -161,7 +170,7 @@ div.main-container div.mailboxes-container div.mailboxes ul li#bin::after {
     margin: 0;
   }
   div.main-container div.mailboxes-container div.mailboxes ul {
-    margin-top: 100px;
+    margin-top: 70px;
     flex-direction: column;
   }
   div.main-container div.mailboxes-container div.mailboxes ul li {
@@ -189,7 +198,6 @@ div.main-container div.mailboxes-container div.emails-container form#emails-comp
   outline: none;
   padding: 10px 20px;
   font-weight: 600;
-  border-radius: 10px;
 }
 div.main-container div.mailboxes-container div.emails-container form#emails-compose .form-control:first-child {
   margin-top: 30px;
@@ -223,15 +231,21 @@ div.main-container div.mailboxes-container div.emails-container form#emails-comp
   color: #bdffff;
   transition: 0.5s;
   border-radius: 20px;
+  background-color: #303030;
+  border: solid #4a4a4a;
   cursor: pointer;
-}
-div.main-container div.mailboxes-container div.emails-container form#emails-compose div.submit-button-contaier button.send-email:hover {
-  background-color: #03784d;
 }
 div.main-container div.mailboxes-container div.emails-container form#emails-compose div.submit-button-contaier button:hover {
   transform: scale(1.1);
-  color: white;
-  background-color: #303030;
+  background-color: #3d3d3d;
+  color: azure;
+}
+div.main-container div.mailboxes-container div.emails-container form#emails-compose div.submit-button-contaier button.send-email {
+  background-color: #005757;
+  border: solid #008a8a;
+}
+div.main-container div.mailboxes-container div.emails-container form#emails-compose div.submit-button-contaier button.send-email:hover {
+  background-color: #007171;
 }
 div.main-container div.mailboxes-container div.emails-container form#emails-compose div.submit-button-contaier button span.icon-paper-plane-o, div.main-container div.mailboxes-container div.emails-container form#emails-compose div.submit-button-contaier button span.icon-file-o {
   color: #002424;
@@ -268,6 +282,7 @@ div.main-container div.mailboxes-container div.emails-container ul.emails li:hov
   color: darkgray;
 }
 div.main-container div.mailboxes-container div.emails-container ul.emails li span.delete-icon, div.main-container div.mailboxes-container div.emails-container ul.emails li span.binned-delete-icon {
+  font-size: 16px;
   cursor: pointer;
 }
 div.main-container div.mailboxes-container div.emails-container ul.emails li span.delete-icon::after, div.main-container div.mailboxes-container div.emails-container ul.emails li span.binned-delete-icon::after {
@@ -283,7 +298,7 @@ div.main-container div.mailboxes-container div.emails-container ul.emails#emails
 }
 div.main-container div.mailboxes-container div.emails-container ul.emails#emails-inbox li.inbox-email table tr td.subject, div.main-container div.mailboxes-container div.emails-container ul.emails#emails-bin li.inbox-email table tr td.subject {
   text-transform: lowercase;
-  color: darkgrey;
+  color: black;
 }
 div.main-container div.mailboxes-container div.emails-container ul.emails#emails-inbox li.inbox-email table tr td:not(.subject), div.main-container div.mailboxes-container div.emails-container ul.emails#emails-bin li.inbox-email table tr td:not(.subject) {
   color: azure;
@@ -304,10 +319,13 @@ div.main-container div.mailboxes-container div.emails-container ul.emails#emails
   border: solid #57ffff 0;
   border-radius: 20%;
 }
+div.main-container div.mailboxes-container div.emails-container ul.emails#email-sent li span em {
+  color: black;
+}
 @media (min-width: 1220px) {
   div.main-container div.mailboxes-container div.emails-container {
     width: 60%;
-    margin: 100px 0 0 0;
+    margin: 55px 0 0 0;
   }
 }
 div.main-container div.mailboxes-container button.logoutButton {
@@ -326,9 +344,10 @@ div.main-container div.mailboxes-container button.logoutButton:hover {
 @media (min-width: 1220px) {
   div.main-container div.mailboxes-container button.logoutButton {
     transform: rotate(90deg);
+    height: 80px;
     width: 100vh;
-    top: calc(50vh - 30px);
-    left: calc(100vw - 50vh - 45px);
+    top: calc(50vh - 40px);
+    left: calc(100vw - 50vh - 30px);
   }
 }
 @media (min-width: 1220px) {
