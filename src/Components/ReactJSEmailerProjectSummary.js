@@ -14,7 +14,9 @@ export default function ReactJSEmailerProjectSummary({loginFormDisplay}) {
     )
 
     return (
-        <section className='project-summary' style={{display: (loginFormDisplay && !projectSummarySeen) ? 'block': 'none' }}>
+        loginFormDisplay && !projectSummarySeen
+                        &&
+        <section className='project-summary'>
             <h2>📘 About This Project</h2>
             <p>
                 <u>React.js Emailer</u> is a simulated email client built with <strong>React.js</strong> on the frontend and <strong>Express.js</strong> on the backend.

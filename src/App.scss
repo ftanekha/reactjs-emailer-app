@@ -8,6 +8,10 @@
 div.main-container{
     font-size: 12px;
     letter-spacing: 1px;
+    padding-bottom: 10px;
+    main{
+        margin-bottom: 60px;
+    }
     button.loginToggleButton{
         @include loginToggleButton;
     }
@@ -39,6 +43,14 @@ div.main-container{
         p{
             color: darken($bulma-black-ter, 100%);
             font-weight: 600;
+            margin-bottom: 30px;
+        }
+        @media(min-width: 768px){
+            width: 60%;
+        }
+
+        @media(min-width: 976px){
+            width: 50%;
         }
     }
     ul#login-error-messages-container{
@@ -382,6 +394,24 @@ div.main-container{
                 width: 100vh;
                 top: calc(50vh - 40px);
                 left: calc( 100vw - 50vh - 30px)
+            }
+        }
+    }
+    footer{
+        a{
+            text-decoration: none;
+            color: darken(azure, 20%);
+            font-weight: 500;
+            font-size: 12px;
+            display: block;
+            text-align: center;
+            span{
+                color: azure;
+                font-weight: 600;
+                font-size: 14px;
+            }
+            &:hover{
+                color: azure;
             }
         }
     }

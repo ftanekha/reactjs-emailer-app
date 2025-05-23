@@ -54,6 +54,10 @@
 div.main-container {
   font-size: 12px;
   letter-spacing: 1px;
+  padding-bottom: 10px;
+}
+div.main-container main {
+  margin-bottom: 60px;
 }
 div.main-container button.loginToggleButton {
   cursor: pointer;
@@ -98,6 +102,17 @@ div.main-container section.project-summary {
 div.main-container section.project-summary p {
   color: black;
   font-weight: 600;
+  margin-bottom: 30px;
+}
+@media (min-width: 768px) {
+  div.main-container section.project-summary {
+    width: 60%;
+  }
+}
+@media (min-width: 976px) {
+  div.main-container section.project-summary {
+    width: 50%;
+  }
 }
 div.main-container ul#login-error-messages-container {
   width: 200px;
@@ -436,6 +451,22 @@ div.main-container div.mailboxes-container button.logoutButton:hover {
     top: calc(50vh - 40px);
     left: calc(100vw - 50vh - 30px);
   }
+}
+div.main-container footer a {
+  text-decoration: none;
+  color: #8affff;
+  font-weight: 500;
+  font-size: 12px;
+  display: block;
+  text-align: center;
+}
+div.main-container footer a span {
+  color: azure;
+  font-weight: 600;
+  font-size: 14px;
+}
+div.main-container footer a:hover {
+  color: azure;
 }
 @media (min-width: 1220px) {
   div.main-container {
