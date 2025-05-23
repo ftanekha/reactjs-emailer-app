@@ -59,7 +59,7 @@ div.main-container{
             top: 70px;
             transition: .5s;
             width: 90vw;
-            left: 4.5vw;
+            left: 4vw;
             background: darken($bulma-black-ter, 15%);
             color: lighten($bulma-black-ter, 50%);
             border: solid darken(azure, 75%);
@@ -69,6 +69,7 @@ div.main-container{
                 position: absolute;
                 color: darken(red, 20%);
                 right: 20px;
+                top: 2px;
                 font-weight: 700;
                 cursor: pointer;
                 &:hover{

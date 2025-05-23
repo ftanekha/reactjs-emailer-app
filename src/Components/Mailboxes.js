@@ -6,7 +6,7 @@ import displayMail from '../js-utilityFunctions/displayMail.js'
 import {isValidStringInput, isUserEmailAddressValid} from '../js-utilityFunctions/formValidation.js'
 
 function Mailboxes({style, logout}){
-    const [drafts, setDrafts] = useState(['Hi, World :)'])
+    const [drafts, setDrafts] = useState([])
     const [sentMail, setSentMail] = useState([])
     const [displayEmailCard, setDisplayEmailCard] = useState(false)
     const [emailOnDisplay, setEmailOnDisplay] = useState({})
@@ -18,11 +18,21 @@ function Mailboxes({style, logout}){
 
     const [emailCompositionErrors, setEmailCompositionErrors] = useState([])
     const [emailSentConfirmation, setEmailSentConfirmation] = useState('')
+
+    const [draftSaveConfirmation, setDraftSaveConfirmation] = useState('')
     
     const saveDraft = ()=> {
         setEmailCompositionErrors(prev => [])
         setEmailSentConfirmation('')
-        setDrafts([...drafts, emailBody.value])
+
+         const newEmail = {
+            emailToAddress: emailToAddress.value,
+            emailSubject: emailSubject.value,
+            emailBody: emailBody.value
+        }
+
+        setDrafts([...drafts, newEmail])
+        setDraftSaveConfirmation('Draft saved')
         emailForm.reset()
     }
 
@@ -49,10 +59,15 @@ function Mailboxes({style, logout}){
         return errors
     }
 
-    const sendEmail = (ev)=>{
-        ev.preventDefault()
+    const clearInfoMessages = ()=> {
         setEmailCompositionErrors(prev => [])
         setEmailSentConfirmation('')
+        setDraftSaveConfirmation('')
+    }
+
+    const sendEmail = (ev)=>{
+        ev.preventDefault()
+        clearInfoMessages()
         //in the future, all of the form data would be sent to db
         //for now, send to express server
         const newEmail = {
@@ -75,6 +90,7 @@ function Mailboxes({style, logout}){
             .then(res => {
                 if(res.status === 200){
                     setEmailCompositionErrors(prev => [])
+                    setDraftSaveConfirmation('')
                     setEmailSentConfirmation('Email sent')
                     emailForm.reset()
                     return res.json()
@@ -100,14 +116,8 @@ function Mailboxes({style, logout}){
         setDisplayEmailCard(false)
     }
 
-    const handleChange = ()=>  {
-        setEmailCompositionErrors(prev => [])
-        setEmailSentConfirmation('')
-    }
-
     const callDisplayMail = (target)=>{
-        setEmailCompositionErrors(prev => [])
-        setEmailSentConfirmation('')
+        clearInfoMessages()
         displayMail({target})
     }
 
@@ -129,10 +139,11 @@ function Mailboxes({style, logout}){
             <div className='emails-container'>
                 <EmailCompositionErrors errors={emailCompositionErrors}/>
                 {emailSentConfirmation && <p style={{width: '80%', margin: '0 auto', color: 'azure', fontWeight: 600}}>{emailSentConfirmation}</p>}
+                {draftSaveConfirmation && <p style={{width: '80%', margin: '0 auto', color: 'azure', fontWeight: 600}}>{draftSaveConfirmation}</p>}
                 <form id='emails-compose' className='emails new-email' onSubmit={sendEmail}>
-                    <input id='email-to-address' className='form-control' type='email' autoComplete='on' placeholder='To:' onChange={handleChange}/>
-                    <input id='email-subject' className='form-control' type='text' autoComplete='on' placeholder='Subject:'onChange={handleChange}/>
-                    <textarea id='email-body' className='form-control text-area' onChange={handleChange}></textarea>
+                    <input id='email-to-address' className='form-control' type='email' autoComplete='on' placeholder='To:' onChange={clearInfoMessages}/>
+                    <input id='email-subject' className='form-control' type='text' autoComplete='on' placeholder='Subject:'onChange={clearInfoMessages}/>
+                    <textarea id='email-body' className='form-control text-area' onChange={clearInfoMessages}></textarea>
                     <div className='submit-button-container'>
                         <button type='submit' className='send-email'>
                             Send&nbsp;&nbsp;<span className='icon-paper-plane-o'></span>
@@ -158,12 +169,9 @@ function Mailboxes({style, logout}){
                     {
                         drafts.map(
                             (email, i) => {
-                                email = Array.from(email)
-                                if(email.length > 50)  email.length = 50
-                                email = email.join('')
                                 return(
-                                    <li key={i}>
-                                        {email} <span title='delete email' className='delete-icon draft' onClick={deleteEmail}></span>
+                                    <li key={i} onClick={()=> displayCurrentEmail(email)} title='Click to view email'>
+                                        <span><em style={{fontWeight: 500, color: 'gray', marginRight: 16}}>{email.emailToAddress}</em>{`${email.emailSubject}...`}</span> <span title='delete email' className='delete-icon' onClick={deleteEmail}></span>
                                     </li>
                                 )
                             }

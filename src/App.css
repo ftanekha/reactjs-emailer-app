@@ -120,7 +120,7 @@ div.main-container div.mailboxes-container table.email-card {
   top: 70px;
   transition: 0.5s;
   width: 90vw;
-  left: 4.5vw;
+  left: 4vw;
   background: black;
   color: #a3a3a3;
   border: solid #007171;
@@ -131,6 +131,7 @@ div.main-container div.mailboxes-container table.email-card span.close-email-car
   position: absolute;
   color: #990000;
   right: 20px;
+  top: 2px;
   font-weight: 700;
   cursor: pointer;
 }
