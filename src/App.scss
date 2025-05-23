@@ -54,6 +54,66 @@ div.main-container{
         @media (min-width: 1220px){
             flex-direction: row;
         }
+        table.email-card{
+            position: absolute;
+            top: 70px;
+            transition: .5s;
+            width: 90vw;
+            left: 4.5vw;
+            background: darken($bulma-black-ter, 15%);
+            color: lighten($bulma-black-ter, 50%);
+            border-radius: 10px;
+            padding-top: 16px;
+            span.close-email-card{
+                position: absolute;
+                color: darken(red, 20%);
+                right: 20px;
+                font-weight: 700;
+                cursor: pointer;
+                &:hover{
+                    transform: scale(1.25);
+                    color: darken(red, 10%);
+                }
+            }
+            tr{
+                &:not(:last-child){
+                    height: 50px;
+                }
+                td{
+                    padding: 10px;
+                    &.lowercase{
+                        text-transform: lowercase;
+                        font-weight: 700;
+                        color: lighten($bulma-black-ter, 10%);
+                    }
+                    &.subject{
+                        text-transform: lowercase;
+                        font-weight: 700;
+                        color: lighten($bulma-black-ter, 30%);
+                    }
+                }
+                td:first-child{
+                    width: 80px;
+                    padding-left: 20px;
+                    color: darken(azure, 70%);
+                    text-transform: capitalize;
+                    font-weight: 600;
+                    display: flex;
+                    align-items: flex-start;
+                    padding-top: 10px;
+                }
+                td.email-body{
+                    font-size: 12px;
+                    vertical-align: top;
+                    color: lighten($bulma-black-ter, 10%);
+                    font-weight: 700;
+                }
+            }
+            @media (min-width: 1220px){
+                width: 70vw;
+                left: 15vw;
+            }
+        }
         div.mailboxes{
             width: 80%;
             margin: 50px auto 20px;
@@ -81,6 +141,7 @@ div.main-container{
                     };
                     &#compose{
                         background-color: darken(azure, 80%) !important;
+                        color: azure !important;
                         span.pencil{
                             color: darken(azure, 50%);
                         }
@@ -133,7 +194,10 @@ div.main-container{
                     border: none;
                     outline: none;
                     padding: 10px 20px;
+                    border: none;
+                    color: black;
                     font-weight: 600;
+                    background-color: darken(white, 5%);
                     &:first-child{
                         margin-top: 30px;
                     }
@@ -141,7 +205,7 @@ div.main-container{
                         font-weight: normal;
                     }
                     &:focus{
-                        background-color: lighten($bulma-black-ter, 80%);
+                        background-color: white;
                     }
                 }
                 input{
@@ -152,7 +216,7 @@ div.main-container{
                     resize: vertical;
                     min-height: 150px;
                 }
-                div.submit-button-contaier{
+                div.submit-button-container{
                     width: 80%;
                     display: flex;
                     flex-direction: column;
@@ -163,16 +227,18 @@ div.main-container{
                         background-color: transparent;
                         border: none;
                         outline: none;
-                        color: darken(azure, 10%);
+                        // color: darken(azure, 10%);
+                        color: lighten($bulma-black-ter, 60%);
                         transition: .5s;
                         border-radius: 20px;
                         background-color: lighten($bulma-black-ter, 5%);
                         border: solid lighten($bulma-black-ter, 15%);
+                        font-size: 12px;
                         cursor: pointer;
                         &:hover{
                             transform: scale(1.1);
                             background-color: lighten($bulma-black-ter, 10%);
-                            color: azure;
+                            // color: azure;
                         }
                         &.send-email{
                             background-color: darken(azure, 80%);
@@ -182,7 +248,7 @@ div.main-container{
                             }
                         }
                         span.icon-paper-plane-o, span.icon-file-o{
-                            color: darken(azure, 90%);
+                            // color: lighten($bulma-black-ter, 60%);
                             font-weight: 900;
                         }
                     }
@@ -283,6 +349,10 @@ div.main-container{
             border-bottom: solid darken(azure, 75%);
             background-color: darken(azure, 80%);
             transition: .5s;
+            display: flex;
+            align-items: flex-end;
+            justify-content: center;
+            padding-bottom: 17.5px;
             &:hover{
                 background-color: darken(azure, 75%);
             }

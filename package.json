@@ -15,7 +15,8 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "sass-w": "sass --watch src/App.scss src/App.css"
   },
   "eslintConfig": {
     "extends": [
@@ -36,6 +37,6 @@
     ]
   },
   "devDependencies": {
-    "@babel/plugin-transform-private-property-in-object": "^7.25.7"
+    "@babel/plugin-transform-private-property-in-object": "^7.27.1"
   }
 }

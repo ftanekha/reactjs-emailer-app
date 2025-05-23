@@ -1,4 +1,4 @@
-import React, {useState} from 'react'
+import {useState} from 'react'
 import LoginForm from './Components/LoginForm.js'
 import Mailboxes from './Components/Mailboxes.js'
 import LogInErrorMessages from './Components/LogInErrorMessages.js'
@@ -17,12 +17,9 @@ function App() {
 
   const handleLoginFormSubmit = (e)=> {
     e.preventDefault()
-    //login errors
-    if(username !== proxyUser) setIsUsernameValid(false)
-    if(password !== proxyPassword) setIsPasswordValid(false)
     //login
-    if(username === proxyUser) setIsUsernameValid(true)
-    if(password === proxyPassword) setIsPasswordValid(true)
+    setIsUsernameValid(username === proxyUser ? true : false)
+    setIsPasswordValid(password === proxyPassword ? true : false)
 
     if(username === proxyUser && password === proxyPassword){
       setloginFormDisplay(!loginFormDisplay)
@@ -38,7 +35,7 @@ function App() {
         username={ username} password={password} loginFormDisplay={loginFormDisplay} logout={logout}
       />
       <LogInErrorMessages isUsernameValid={isUsernameValid} isPasswordValid={isPasswordValid}/>
-      <Mailboxes style={{display: loginFormDisplay? 'none': 'flex'}} logout={logout}/>
+      <Mailboxes style={{display: loginFormDisplay? 'none': 'flex', position: 'relative'}} logout={logout}/>
     </div>
   );
 }

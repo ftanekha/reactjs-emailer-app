@@ -115,6 +115,66 @@ div.main-container div.mailboxes-container {
     flex-direction: row;
   }
 }
+div.main-container div.mailboxes-container table.email-card {
+  position: absolute;
+  top: 70px;
+  transition: 0.5s;
+  width: 90vw;
+  left: 4.5vw;
+  background: black;
+  color: #a3a3a3;
+  border-radius: 10px;
+  padding-top: 16px;
+}
+div.main-container div.mailboxes-container table.email-card span.close-email-card {
+  position: absolute;
+  color: #990000;
+  right: 20px;
+  font-weight: 700;
+  cursor: pointer;
+}
+div.main-container div.mailboxes-container table.email-card span.close-email-card:hover {
+  transform: scale(1.25);
+  color: #cc0000;
+}
+div.main-container div.mailboxes-container table.email-card tr:not(:last-child) {
+  height: 50px;
+}
+div.main-container div.mailboxes-container table.email-card tr td {
+  padding: 10px;
+}
+div.main-container div.mailboxes-container table.email-card tr td.lowercase {
+  text-transform: lowercase;
+  font-weight: 700;
+  color: #3d3d3d;
+}
+div.main-container div.mailboxes-container table.email-card tr td.subject {
+  text-transform: lowercase;
+  font-weight: 700;
+  color: #707070;
+}
+div.main-container div.mailboxes-container table.email-card tr td:first-child {
+  width: 80px;
+  padding-left: 20px;
+  color: #008a8a;
+  text-transform: capitalize;
+  font-weight: 600;
+  display: flex;
+  align-items: flex-start;
+  padding-top: 10px;
+}
+div.main-container div.mailboxes-container table.email-card tr td.email-body {
+  font-size: 12px;
+  vertical-align: top;
+  color: #3d3d3d;
+  font-weight: 700;
+}
+@media (min-width: 1220px) {
+  div.main-container div.mailboxes-container table.email-card {
+    width: 70vw;
+    left: 15vw;
+  }
+}
 div.main-container div.mailboxes-container div.mailboxes {
   width: 80%;
   margin: 50px auto 20px;
@@ -145,6 +205,7 @@ div.main-container div.mailboxes-container div.mailboxes ul li:hover {
 }
 div.main-container div.mailboxes-container div.mailboxes ul li#compose {
   background-color: #005757 !important;
+  color: azure !important;
 }
 div.main-container div.mailboxes-container div.mailboxes ul li#compose span.pencil {
   color: #00f0f0;
@@ -197,7 +258,10 @@ div.main-container div.mailboxes-container div.emails-container form#emails-comp
   border: none;
   outline: none;
   padding: 10px 20px;
+  border: none;
+  color: black;
   font-weight: 600;
+  background-color: #f2f2f2;
 }
 div.main-container div.mailboxes-container div.emails-container form#emails-compose .form-control:first-child {
   margin-top: 30px;
@@ -206,7 +270,7 @@ div.main-container div.mailboxes-container div.emails-container form#emails-comp
   font-weight: normal;
 }
 div.main-container div.mailboxes-container div.emails-container form#emails-compose .form-control:focus {
-  background-color: #f0f0f0;
+  background-color: white;
 }
 div.main-container div.mailboxes-container div.emails-container form#emails-compose input {
   height: 30px;
@@ -216,49 +280,48 @@ div.main-container div.mailboxes-container div.emails-container form#emails-comp
   resize: vertical;
   min-height: 150px;
 }
-div.main-container div.mailboxes-container div.emails-container form#emails-compose div.submit-button-contaier {
+div.main-container div.mailboxes-container div.emails-container form#emails-compose div.submit-button-container {
   width: 80%;
   display: flex;
   flex-direction: column;
   gap: 5px;
 }
-div.main-container div.mailboxes-container div.emails-container form#emails-compose div.submit-button-contaier button {
+div.main-container div.mailboxes-container div.emails-container form#emails-compose div.submit-button-container button {
   width: 100%;
   height: 50px;
   background-color: transparent;
   border: none;
   outline: none;
-  color: #bdffff;
+  color: #bdbdbd;
   transition: 0.5s;
   border-radius: 20px;
   background-color: #303030;
   border: solid #4a4a4a;
+  font-size: 12px;
   cursor: pointer;
 }
-div.main-container div.mailboxes-container div.emails-container form#emails-compose div.submit-button-contaier button:hover {
+div.main-container div.mailboxes-container div.emails-container form#emails-compose div.submit-button-container button:hover {
   transform: scale(1.1);
   background-color: #3d3d3d;
-  color: azure;
 }
-div.main-container div.mailboxes-container div.emails-container form#emails-compose div.submit-button-contaier button.send-email {
+div.main-container div.mailboxes-container div.emails-container form#emails-compose div.submit-button-container button.send-email {
   background-color: #005757;
   border: solid #008a8a;
 }
-div.main-container div.mailboxes-container div.emails-container form#emails-compose div.submit-button-contaier button.send-email:hover {
+div.main-container div.mailboxes-container div.emails-container form#emails-compose div.submit-button-container button.send-email:hover {
   background-color: #007171;
 }
-div.main-container div.mailboxes-container div.emails-container form#emails-compose div.submit-button-contaier button span.icon-paper-plane-o, div.main-container div.mailboxes-container div.emails-container form#emails-compose div.submit-button-contaier button span.icon-file-o {
-  color: #002424;
+div.main-container div.mailboxes-container div.emails-container form#emails-compose div.submit-button-container button span.icon-paper-plane-o, div.main-container div.mailboxes-container div.emails-container form#emails-compose div.submit-button-container button span.icon-file-o {
   font-weight: 900;
 }
 @media (min-width: 768px) {
-  div.main-container div.mailboxes-container div.emails-container form#emails-compose div.submit-button-contaier {
+  div.main-container div.mailboxes-container div.emails-container form#emails-compose div.submit-button-container {
     width: 70%;
     flex-direction: row;
     justify-content: space-between;
     margin-top: 30px;
   }
-  div.main-container div.mailboxes-container div.emails-container form#emails-compose div.submit-button-contaier button {
+  div.main-container div.mailboxes-container div.emails-container form#emails-compose div.submit-button-container button {
     width: 40%;
   }
 }
@@ -337,6 +400,10 @@ div.main-container div.mailboxes-container button.logoutButton {
   border-bottom: solid #007171;
   background-color: #005757;
   transition: 0.5s;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  padding-bottom: 17.5px;
 }
 div.main-container div.mailboxes-container button.logoutButton:hover {
   background-color: #007171;

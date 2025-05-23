@@ -56,9 +56,10 @@ export default function displayMail({target}){
                         deleteIcon.title = 'delete email'
                         deleteIcon.className = 'delete-icon'
                         deleteIcon.addEventListener(
-                            'click', ({target})=> {
-                                target.className = 'binned-delete-icon'
-                                document.querySelector('#emails-bin').appendChild(target.parentElement)
+                            'click', (ev)=> {
+                                ev.stopPropagation()
+                                ev.target.className = 'binned-delete-icon'
+                                document.querySelector('#emails-bin').appendChild(ev.target.parentElement)
                             }, {once: true}
                         )
                         li.appendChild(newEmail)
