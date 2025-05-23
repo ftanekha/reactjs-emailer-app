@@ -142,7 +142,7 @@ div.main-container div.mailboxes-container {
     flex-direction: row;
   }
 }
-div.main-container div.mailboxes-container table.email-card {
+div.main-container div.mailboxes-container div.email-card-container {
   position: absolute;
   top: 70px;
   transition: 0.5s;
@@ -154,42 +154,48 @@ div.main-container div.mailboxes-container table.email-card {
   border-radius: 10px;
   padding-top: 16px;
 }
-div.main-container div.mailboxes-container table.email-card span.close-email-card {
+div.main-container div.mailboxes-container div.email-card-container span.close-email-card {
   position: absolute;
+  z-index: 10000;
   color: #990000;
   right: 20px;
   top: 2px;
   font-weight: 700;
+  font-size: 16px;
   cursor: pointer;
 }
-div.main-container div.mailboxes-container table.email-card span.close-email-card:hover {
+div.main-container div.mailboxes-container div.email-card-container span.close-email-card:hover {
   transform: scale(1.25);
   color: #cc0000;
 }
-div.main-container div.mailboxes-container table.email-card thead {
+div.main-container div.mailboxes-container div.email-card-container table.email-card {
+  position: relative;
+  width: 100%;
+}
+div.main-container div.mailboxes-container div.email-card-container table.email-card thead {
   display: none;
 }
-div.main-container div.mailboxes-container table.email-card tbody {
+div.main-container div.mailboxes-container div.email-card-container table.email-card tbody {
   margin: 0;
   padding: 0;
 }
-div.main-container div.mailboxes-container table.email-card tbody tr:not(:last-child) {
+div.main-container div.mailboxes-container div.email-card-container table.email-card tbody tr:not(:last-child) {
   height: 50px;
 }
-div.main-container div.mailboxes-container table.email-card tbody tr td {
+div.main-container div.mailboxes-container div.email-card-container table.email-card tbody tr td {
   padding: 10px;
 }
-div.main-container div.mailboxes-container table.email-card tbody tr td.lowercase {
+div.main-container div.mailboxes-container div.email-card-container table.email-card tbody tr td.lowercase {
   text-transform: lowercase;
   font-weight: 700;
   color: #3d3d3d;
 }
-div.main-container div.mailboxes-container table.email-card tbody tr td.subject {
+div.main-container div.mailboxes-container div.email-card-container table.email-card tbody tr td.subject {
   text-transform: lowercase;
   font-weight: 700;
   color: #707070;
 }
-div.main-container div.mailboxes-container table.email-card tbody tr td:first-child {
+div.main-container div.mailboxes-container div.email-card-container table.email-card tbody tr td:first-child {
   width: 80px;
   padding-left: 20px;
   color: #008a8a;
@@ -199,14 +205,14 @@ div.main-container div.mailboxes-container table.email-card tbody tr td:first-ch
   align-items: flex-start;
   padding-top: 10px;
 }
-div.main-container div.mailboxes-container table.email-card tbody tr td.email-body {
+div.main-container div.mailboxes-container div.email-card-container table.email-card tbody tr td.email-body {
   font-size: 12px;
   vertical-align: top;
   color: #3d3d3d;
   font-weight: 700;
 }
 @media (min-width: 1220px) {
-  div.main-container div.mailboxes-container table.email-card {
+  div.main-container div.mailboxes-container div.email-card-container {
     width: 70vw;
     left: 15vw;
   }

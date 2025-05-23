@@ -1,7 +1,6 @@
 import {useState} from 'react'
 import LoginForm from './Components/LoginForm.js'
 import Mailboxes from './Components/Mailboxes.js'
-import LogInErrorMessages from './Components/LogInErrorMessages.js'
 import './App.css'
 
 function App() {
@@ -33,8 +32,8 @@ function App() {
     <div className='main-container'>
       <LoginForm setPassword={setPassword} setUsername={setUsername} handleLoginFormSubmit={handleLoginFormSubmit}  
         username={ username} password={password} loginFormDisplay={loginFormDisplay} logout={logout}
+        isUsernameValid={isUsernameValid} isPasswordValid={isPasswordValid}
       />
-      <LogInErrorMessages isUsernameValid={isUsernameValid} isPasswordValid={isPasswordValid}/>
       <Mailboxes style={{display: loginFormDisplay? 'none': 'flex', position: 'relative'}} logout={logout}/>
     </div>
   );

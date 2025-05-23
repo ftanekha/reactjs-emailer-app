@@ -1,8 +1,9 @@
 import React from 'react'
 import LoginButton from './LoginButton.js'
+import LogInErrorMessages from './LogInErrorMessages.js'
 import ReactJSEmailerProjectSummary from './ReactJSEmailerProjectSummary.js'
 
-function LoginForm({handleLoginFormSubmit, setUsername, setPassword, username, password, loginFormDisplay}){
+function LoginForm({handleLoginFormSubmit, setUsername, setPassword, username, password, loginFormDisplay, isUsernameValid, isPasswordValid}){
     return(
         <React.Fragment>
             <main>
@@ -27,6 +28,7 @@ function LoginForm({handleLoginFormSubmit, setUsername, setPassword, username, p
                     />
                     <LoginButton/>
                 </form>
+                <LogInErrorMessages isUsernameValid={isUsernameValid} isPasswordValid={isPasswordValid}/>
                 <ReactJSEmailerProjectSummary loginFormDisplay={loginFormDisplay}/>
             </main>
              {

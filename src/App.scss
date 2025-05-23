@@ -78,7 +78,7 @@ div.main-container{
         @media (min-width: 1220px){
             flex-direction: row;
         }
-        table.email-card{
+        div.email-card-container{  
             position: absolute;
             top: 70px;
             transition: .5s;
@@ -91,54 +91,60 @@ div.main-container{
             padding-top: 16px;
             span.close-email-card{
                 position: absolute;
+                z-index: 10000;
                 color: darken(red, 20%);
                 right: 20px;
                 top: 2px;
                 font-weight: 700;
+                font-size: 16px;
                 cursor: pointer;
                 &:hover{
                     transform: scale(1.25);
                     color: darken(red, 10%);
                 }
             }
-            thead{
-                display: none;
-            }
-            tbody{
-                margin: 0;
-                padding: 0;
-                tr{
-                    &:not(:last-child){
-                        height: 50px;
-                    }
-                    td{
-                        padding: 10px;
-                        &.lowercase{
-                            text-transform: lowercase;
-                            font-weight: 700;
+            table.email-card{
+                position: relative;
+                width: 100%;
+                thead{
+                    display: none;
+                }
+                tbody{
+                    margin: 0;
+                    padding: 0;
+                    tr{
+                        &:not(:last-child){
+                            height: 50px;
+                        }
+                        td{
+                            padding: 10px;
+                            &.lowercase{
+                                text-transform: lowercase;
+                                font-weight: 700;
+                                color: lighten($bulma-black-ter, 10%);
+                            }
+                            &.subject{
+                                text-transform: lowercase;
+                                font-weight: 700;
+                                color: lighten($bulma-black-ter, 30%);
+                            }
+                        }
+                        td:first-child{
+                            width: 80px;
+                            padding-left: 20px;
+                            color: darken(azure, 70%);
+                            text-transform: capitalize;
+                            font-weight: 600;
+                            display: flex;
+                            align-items: flex-start;
+                            padding-top: 10px;
+                        }
+                        td.email-body{
+                            font-size: 12px;
+                            vertical-align: top;
                             color: lighten($bulma-black-ter, 10%);
-                        }
-                        &.subject{
-                            text-transform: lowercase;
                             font-weight: 700;
-                            color: lighten($bulma-black-ter, 30%);
                         }
-                    }
-                    td:first-child{
-                        width: 80px;
-                        padding-left: 20px;
-                        color: darken(azure, 70%);
-                        text-transform: capitalize;
-                        font-weight: 600;
-                        display: flex;
-                        align-items: flex-start;
-                        padding-top: 10px;
-                    }
-                    td.email-body{
-                        font-size: 12px;
-                        vertical-align: top;
-                        color: lighten($bulma-black-ter, 10%);
-                        font-weight: 700;
                     }
                 }
             }
