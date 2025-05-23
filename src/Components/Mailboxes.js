@@ -1,6 +1,7 @@
 import {useState} from 'react'
 import LogoutButton from './LogoutButton.js'
 import EmailCard from './EmailCard.js'
+import EmailCompositionErrors from './EmailCompositionErrors.js'
 import displayMail from '../js-utilityFunctions/displayMail.js'
 import {isValidStringInput, isUserEmailAddressValid} from '../js-utilityFunctions/formValidation.js'
 
@@ -14,8 +15,13 @@ function Mailboxes({style, logout}){
     const emailToAddress = document.querySelector('#email-to-address')
     const emailSubject = document.querySelector('#email-subject')
     const emailBody = document.querySelector('#email-body')
+
+    const [emailCompositionErrors, setEmailCompositionErrors] = useState([])
+    const [emailSentConfirmation, setEmailSentConfirmation] = useState('')
     
     const saveDraft = ()=> {
+        setEmailCompositionErrors(prev => [])
+        setEmailSentConfirmation('')
         setDrafts([...drafts, emailBody.value])
         emailForm.reset()
     }
@@ -34,6 +40,8 @@ function Mailboxes({style, logout}){
 
     const validateEmail = ({emailToAddress, emailSubject, emailBody})=>{
         const errors = []
+        if(emailSubject.length < 2) errors.push('Email subject too short')
+        if(emailBody.length < 2) errors.push('Email too short')
         if(!isUserEmailAddressValid(emailToAddress)) errors.push('Invalid email address')
         if(!isValidStringInput(emailSubject)) errors.push('Invalid email subject')
         if(!isValidStringInput(emailBody)) errors.push('Invalid email format')
@@ -43,6 +51,8 @@ function Mailboxes({style, logout}){
 
     const sendEmail = (ev)=>{
         ev.preventDefault()
+        setEmailCompositionErrors(prev => [])
+        setEmailSentConfirmation('')
         //in the future, all of the form data would be sent to db
         //for now, send to express server
         const newEmail = {
@@ -64,7 +74,8 @@ function Mailboxes({style, logout}){
             )
             .then(res => {
                 if(res.status === 200){
-                    console.info('new email sent')
+                    setEmailCompositionErrors(prev => [])
+                    setEmailSentConfirmation('Email sent')
                     emailForm.reset()
                     return res.json()
                 }
@@ -76,7 +87,7 @@ function Mailboxes({style, logout}){
             )
             .catch(err => console.warn(err))
         }else{
-            console.table(isEmailDataValid)
+            return setEmailCompositionErrors(prev => isEmailDataValid)
         }
     }
     
@@ -87,6 +98,11 @@ function Mailboxes({style, logout}){
 
     const closeEmailCard = ()=> {
         setDisplayEmailCard(false)
+    }
+
+    const handleChange = ()=>  {
+        setEmailCompositionErrors(prev => [])
+        setEmailSentConfirmation('')
     }
 
     return(
@@ -105,10 +121,12 @@ function Mailboxes({style, logout}){
                 </ul>
             </div>
             <div className='emails-container'>
+                <EmailCompositionErrors errors={emailCompositionErrors}/>
+                {emailSentConfirmation && <p style={{width: '80%', margin: '0 auto', color: 'azure', fontWeight: 600}}>{emailSentConfirmation}</p>}
                 <form id='emails-compose' className='emails new-email' onSubmit={sendEmail}>
-                    <input id='email-to-address' className='form-control' type='email' autoComplete='on' placeholder='To:'/>
-                    <input id='email-subject' className='form-control' type='text' autoComplete='on' placeholder='Subject:'/>
-                    <textarea id='email-body' className='form-control text-area'></textarea>
+                    <input id='email-to-address' className='form-control' type='email' autoComplete='on' placeholder='To:' onChange={handleChange}/>
+                    <input id='email-subject' className='form-control' type='text' autoComplete='on' placeholder='Subject:'onChange={handleChange}/>
+                    <textarea id='email-body' className='form-control text-area' onChange={handleChange}></textarea>
                     <div className='submit-button-container'>
                         <button type='submit' className='send-email'>
                             Send&nbsp;&nbsp;<span className='icon-paper-plane-o'></span>

@@ -1,7 +1,6 @@
 function isValidStringInput(input){
-    //only contains letters, dashes, apostrophes and whitespaces
-    if(input.length > 3){
-        const regex = /^[a-zA-Z-' ]*$/g
+    if(input.length >= 2){
+        const regex = /^[\w'-.,@:() ]*$/g
         const result = regex.test(input)
         return result
     }else{

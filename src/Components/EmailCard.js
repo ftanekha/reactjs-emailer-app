@@ -10,18 +10,20 @@ export default function EmailCard({displayEmailCard, emailOnDisplay, closeEmailC
     return(
         <table className='email-card' style={style}>
             <span className='close-email-card' title='Close the email card' onClick={closeEmailCard}>x</span>
-            <tr>
-                <td>To</td>
-                <td className='lowercase'>{emailToAddress}</td>
-            </tr>
-            <tr>
-                <td>subject</td>
-                <td className='subject'>{emailSubject}</td>
-            </tr>
-            <tr>
-                <td>body</td>
-                <td className='email-body'>{emailBody}</td>
-            </tr>
+            <tbody>
+                <tr>
+                    <td>To</td>
+                    <td className='lowercase'>{emailToAddress}</td>
+                </tr>
+                <tr>
+                    <td>subject</td>
+                    <td className='subject'>{emailSubject}</td>
+                </tr>
+                <tr>
+                    <td>body</td>
+                    <td className='email-body'>{emailBody}</td>
+                </tr>
+            </tbody>
         </table>
     )
 }
