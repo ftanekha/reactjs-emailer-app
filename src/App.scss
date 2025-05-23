@@ -29,6 +29,18 @@ div.main-container{
             transition: .5s;
         }
     }
+    section.project-summary{
+        width: 80%;
+        margin: 60px auto;
+        border: solid 2px darken(azure, 70%);
+        border-radius: 20px;
+        background-color: darken(azure, 5%);
+        padding: 10px;
+        p{
+            color: darken($bulma-black-ter, 100%);
+            font-weight: 600;
+        }
+    }
     ul#login-error-messages-container{
         width: 200px;
         margin: 10px auto;
@@ -77,38 +89,45 @@ div.main-container{
                     color: darken(red, 10%);
                 }
             }
-            tr{
-                &:not(:last-child){
-                    height: 50px;
-                }
-                td{
-                    padding: 10px;
-                    &.lowercase{
-                        text-transform: lowercase;
-                        font-weight: 700;
+            thead{
+                display: none;
+            }
+            tbody{
+                margin: 0;
+                padding: 0;
+                tr{
+                    &:not(:last-child){
+                        height: 50px;
+                    }
+                    td{
+                        padding: 10px;
+                        &.lowercase{
+                            text-transform: lowercase;
+                            font-weight: 700;
+                            color: lighten($bulma-black-ter, 10%);
+                        }
+                        &.subject{
+                            text-transform: lowercase;
+                            font-weight: 700;
+                            color: lighten($bulma-black-ter, 30%);
+                        }
+                    }
+                    td:first-child{
+                        width: 80px;
+                        padding-left: 20px;
+                        color: darken(azure, 70%);
+                        text-transform: capitalize;
+                        font-weight: 600;
+                        display: flex;
+                        align-items: flex-start;
+                        padding-top: 10px;
+                    }
+                    td.email-body{
+                        font-size: 12px;
+                        vertical-align: top;
                         color: lighten($bulma-black-ter, 10%);
-                    }
-                    &.subject{
-                        text-transform: lowercase;
                         font-weight: 700;
-                        color: lighten($bulma-black-ter, 30%);
                     }
-                }
-                td:first-child{
-                    width: 80px;
-                    padding-left: 20px;
-                    color: darken(azure, 70%);
-                    text-transform: capitalize;
-                    font-weight: 600;
-                    display: flex;
-                    align-items: flex-start;
-                    padding-top: 10px;
-                }
-                td.email-body{
-                    font-size: 12px;
-                    vertical-align: top;
-                    color: lighten($bulma-black-ter, 10%);
-                    font-weight: 700;
                 }
             }
             @media (min-width: 1220px){

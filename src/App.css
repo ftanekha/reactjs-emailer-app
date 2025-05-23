@@ -87,6 +87,18 @@ div.main-container form#login-form input {
   outline: none;
   transition: 0.5s;
 }
+div.main-container section.project-summary {
+  width: 80%;
+  margin: 60px auto;
+  border: solid 2px #008a8a;
+  border-radius: 20px;
+  background-color: #d7ffff;
+  padding: 10px;
+}
+div.main-container section.project-summary p {
+  color: black;
+  font-weight: 600;
+}
 div.main-container ul#login-error-messages-container {
   width: 200px;
   margin: 10px auto;
@@ -139,23 +151,30 @@ div.main-container div.mailboxes-container table.email-card span.close-email-car
   transform: scale(1.25);
   color: #cc0000;
 }
-div.main-container div.mailboxes-container table.email-card tr:not(:last-child) {
+div.main-container div.mailboxes-container table.email-card thead {
+  display: none;
+}
+div.main-container div.mailboxes-container table.email-card tbody {
+  margin: 0;
+  padding: 0;
+}
+div.main-container div.mailboxes-container table.email-card tbody tr:not(:last-child) {
   height: 50px;
 }
-div.main-container div.mailboxes-container table.email-card tr td {
+div.main-container div.mailboxes-container table.email-card tbody tr td {
   padding: 10px;
 }
-div.main-container div.mailboxes-container table.email-card tr td.lowercase {
+div.main-container div.mailboxes-container table.email-card tbody tr td.lowercase {
   text-transform: lowercase;
   font-weight: 700;
   color: #3d3d3d;
 }
-div.main-container div.mailboxes-container table.email-card tr td.subject {
+div.main-container div.mailboxes-container table.email-card tbody tr td.subject {
   text-transform: lowercase;
   font-weight: 700;
   color: #707070;
 }
-div.main-container div.mailboxes-container table.email-card tr td:first-child {
+div.main-container div.mailboxes-container table.email-card tbody tr td:first-child {
   width: 80px;
   padding-left: 20px;
   color: #008a8a;
@@ -165,7 +184,7 @@ div.main-container div.mailboxes-container table.email-card tr td:first-child {
   align-items: flex-start;
   padding-top: 10px;
 }
-div.main-container div.mailboxes-container table.email-card tr td.email-body {
+div.main-container div.mailboxes-container table.email-card tbody tr td.email-body {
   font-size: 12px;
   vertical-align: top;
   color: #3d3d3d;

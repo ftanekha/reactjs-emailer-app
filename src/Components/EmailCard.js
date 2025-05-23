@@ -10,6 +10,7 @@ export default function EmailCard({displayEmailCard, emailOnDisplay, closeEmailC
     return(
         <table className='email-card' style={style}>
             <span className='close-email-card' title='Close the email card' onClick={closeEmailCard}>x</span>
+            <thead></thead>
             <tbody>
                 <tr>
                     <td>To</td>
