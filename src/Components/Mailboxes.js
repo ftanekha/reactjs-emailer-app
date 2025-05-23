@@ -105,19 +105,25 @@ function Mailboxes({style, logout}){
         setEmailSentConfirmation('')
     }
 
+    const callDisplayMail = (target)=>{
+        setEmailCompositionErrors(prev => [])
+        setEmailSentConfirmation('')
+        displayMail({target})
+    }
+
     return(
         <div className='mailboxes-container' style={style}>
             <EmailCard displayEmailCard={displayEmailCard} emailOnDisplay={emailOnDisplay} closeEmailCard={closeEmailCard}/>
             <div className='mailboxes'>
                 <ul>
                     <li id='compose' className='mailbox-link' key='compose' title='create a new email'
-                        onClick={displayMail} style={{backgroundColor: '#57ffff', color: 'black'}}>
+                        onClick={({target})=> callDisplayMail(target)} style={{backgroundColor: '#57ffff', color: 'black'}}>
                         Compose&nbsp;<span className='pencil'>&#128393;</span>
                     </li>
-                    <li id='inbox' key='inbox' className='mailbox-link' onClick={displayMail}>Inbox</li>
-                    <li id='sent' key='sent' className='mailbox-link' onClick={displayMail}>Sent</li>
-                    <li id='drafts' key='drafts' className='mailbox-link' onClick={displayMail}>Drafts</li>
-                    <li id='bin' key='bin' className='mailbox-link' title='Bin' onClick={displayMail}></li>
+                    <li id='inbox' key='inbox' className='mailbox-link' onClick={({target})=> callDisplayMail(target)}>Inbox</li>
+                    <li id='sent' key='sent' className='mailbox-link' onClick={({target})=> callDisplayMail(target)}>Sent</li>
+                    <li id='drafts' key='drafts' className='mailbox-link' onClick={({target})=> callDisplayMail(target)}>Drafts</li>
+                    <li id='bin' key='bin' className='mailbox-link' title='Bin' onClick={({target})=> callDisplayMail(target)}></li>
                 </ul>
             </div>
             <div className='emails-container'>
