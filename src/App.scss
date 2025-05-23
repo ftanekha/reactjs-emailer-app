@@ -4,6 +4,16 @@
     './scss-fonts/ico-moon/paper-plane/paper-plane',
     './scss-fonts/ico-moon/file-o/file-o'
 ;
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+input, textarea, select {
+    appearance: none;
+    padding: 0;
+    margin: 0;
+}
 
 div.main-container{
     font-size: 12px;
@@ -89,6 +99,11 @@ div.main-container{
             border: solid darken(azure, 75%);
             border-radius: 10px;
             padding-top: 16px;
+            overflow: hidden;
+            box-sizing: border-box;
+            will-change: transform, opacity; 
+            margin: 0;
+            padding: 0;
             span.close-email-card{
                 position: absolute;
                 z-index: 10000;
@@ -104,6 +119,10 @@ div.main-container{
                 }
             }
             table.email-card{
+                box-sizing: border-box;
+                will-change: transform, opacity; 
+                margin: 0;
+                padding: 0;
                 position: relative;
                 width: 100%;
                 thead{
