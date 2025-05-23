@@ -126,7 +126,7 @@ function Mailboxes({style, logout}){
             <EmailCard displayEmailCard={displayEmailCard} emailOnDisplay={emailOnDisplay} closeEmailCard={closeEmailCard}/>
             <div className='mailboxes'>
                 <ul>
-                    <li id='compose' className='mailbox-link' key='compose' title='create a new email'
+                    <li id='compose' className='mailbox-link' key='compose' title='Create a new email'
                         onClick={({target})=> callDisplayMail(target)} style={{backgroundColor: '#57ffff', color: 'black'}}>
                         Compose&nbsp;<span className='pencil'>&#128393;</span>
                     </li>
@@ -158,7 +158,7 @@ function Mailboxes({style, logout}){
                             (email, i) => {
                                 return(
                                     <li key={i} onClick={()=> displayCurrentEmail(email)} title='Click to view email'>
-                                        <span><em style={{fontWeight: 500, color: 'gray', marginRight: 16}}>{email.emailToAddress}</em>{`${email.emailSubject}...`}</span> <span title='delete email' className='delete-icon' onClick={deleteEmail}></span>
+                                        <span><em style={{fontWeight: 500, color: 'gray', marginRight: 16}}>{email.emailToAddress}</em>{`${email.emailSubject}...`}</span> <span title='Delete email' className='delete-icon' onClick={deleteEmail}></span>
                                     </li>
                                 )
                             }
@@ -170,8 +170,8 @@ function Mailboxes({style, logout}){
                         drafts.map(
                             (email, i) => {
                                 return(
-                                    <li key={i} onClick={()=> displayCurrentEmail(email)} title='Click to view email'>
-                                        <span><em style={{fontWeight: 500, color: 'gray', marginRight: 16}}>{email.emailToAddress}</em>{`${email.emailSubject}...`}</span> <span title='delete email' className='delete-icon' onClick={deleteEmail}></span>
+                                    <li key={i} onClick={()=> displayCurrentEmail(email)} title='Click to view draft'>
+                                        <span><em style={{fontWeight: 500, color: 'gray', marginRight: 16}}>{email.emailToAddress}</em>{`${email.emailSubject}...`}</span> <span title='Delete email' className='delete-icon' onClick={deleteEmail}></span>
                                     </li>
                                 )
                             }
