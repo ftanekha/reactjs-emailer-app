@@ -191,8 +191,9 @@ div.main-container{
                     justify-content: center;
                     align-items: center;
                     color: azure;
-                    font-weight: 500;
                     transition: .5s;
+                    font-size: 10px;
+                    font-weight: 500;
                     cursor: pointer;
                     &:hover{
                         color: $active_mailbox-link;
@@ -229,6 +230,7 @@ div.main-container{
                     margin-top: 70px;
                     flex-direction: column;
                     li{
+                        font-size: 12px;
                         font-weight: 600;
                         height: 100px;
                     }
@@ -284,18 +286,16 @@ div.main-container{
                         background-color: transparent;
                         border: none;
                         outline: none;
-                        // color: darken(azure, 10%);
                         color: lighten($bulma-black-ter, 60%);
                         transition: .5s;
                         border-radius: 20px;
                         background-color: lighten($bulma-black-ter, 5%);
                         border: solid lighten($bulma-black-ter, 15%);
-                        font-size: 12px;
+                        font-size: 10px;
                         cursor: pointer;
                         &:hover{
                             transform: scale(1.1);
                             background-color: lighten($bulma-black-ter, 10%);
-                            // color: azure;
                         }
                         &.send-email{
                             background-color: darken(azure, 80%);
@@ -305,7 +305,6 @@ div.main-container{
                             }
                         }
                         span.icon-paper-plane-o, span.icon-file-o{
-                            // color: lighten($bulma-black-ter, 60%);
                             font-weight: 900;
                         }
                     }
@@ -316,6 +315,12 @@ div.main-container{
                         margin-top: 30px;
                         button{
                             width: 40%;
+                        }
+                    }
+                    @media (min-width: 1220px){
+                        button{
+                            font-size: 12px;
+                            font-weight: 600;
                         }
                     }
                 }
@@ -431,9 +436,20 @@ div.main-container{
             display: block;
             text-align: center;
             span{
-                color: azure;
+                color: darken($bulma-black-ter, 50%);
                 font-weight: 600;
                 font-size: 14px;
+                background: darken(azure, 50%);
+                border-radius: 2px;
+                display: inline-flex;
+                justify-content: center;
+                align-items: center;
+                width: 16px;
+                height: 16px;
+                &:hover{
+                    color: azure;
+                }
+
             }
             &:hover{
                 color: azure;
